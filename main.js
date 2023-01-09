@@ -12,21 +12,27 @@ function writeDinamic(...dataUser){
 }
 // *******************************Arrow*******************************
 function arrayIS6(){
+
     const originArray=[0,1,2];
+
     //*****************ForEach***************** 
+    //Recorre por cada elemento
     originArray.forEach(item => {
         writeDinamic(JSON.stringify(item*2));
     })
+
     //*******************Map*******************
     // Map cria um novo arreglo do mesmo tamnho
     const newArray= originArray.map(item =>{
         return item+1;
     })
     writeDinamic(JSON.stringify(newArray));
+
     //*******************Filter*******************
     //Filtra do Array, selecão dos impars
     const newArray2 = originArray.filter(item => item % 2 !== 0)
     writeDinamic(JSON.stringify(newArray2));
+
     //*******************Every*******************
     //Retorna true o falso se todos os elementos satisfacen a condição
     const everyNumber = originArray.every(item => typeof item === 'number');
@@ -34,6 +40,7 @@ function arrayIS6(){
     //*******************Ternary Operator variavel ? V1:V2 *******************
     // No operador ternario toma o valor da ezquerda sim é verdadeira a condição
     // Se é falso toma o valor da direita
+    
 }
 //*******************Nullish Caoalescing Operator*******************
 function dataUser(old){

@@ -1,6 +1,6 @@
 // IS6 features no JavaScript
 // *******************************ForEach*******************************
-export function writeDinamic(...dataUser){
+function writeDinamic(...dataUser){
     dataUser.forEach((dataUser) => {
         //Criando o texto DINAMICAMENTE
         var spanNova = document.createElement('p');
@@ -10,15 +10,37 @@ export function writeDinamic(...dataUser){
         document.body.insertBefore(spanNova, spanAtual);
     })
 }
-
+// *******************************Arrow*******************************
+function arrayIS6(){
+    const originArray=[0,1,2];
+    //*****************ForEach***************** 
+    originArray.forEach(item => {
+        writeDinamic(JSON.stringify(item*2));
+    })
+    //*******************Map*******************
+    // Map cria um novo arreglo do mesmo tamnho
+    const newArray= originArray.map(item =>{
+        return item+1;
+    })
+    writeDinamic(JSON.stringify(newArray));
+    //*******************Filter*******************
+    //Filtra do Array, selecão dos impars
+    const newArray2 = originArray.filter(item => item % 2 !== 0)
+    writeDinamic(JSON.stringify(newArray2));
+    //*******************Every*******************
+    //Retorna true o falso se todos os elementos satisfacen a condição
+    const everyNumber = originArray.every(item => typeof item === 'number');
+    writeDinamic(JSON.stringify(newArray2 ? 'Todos os elementos do array são Numeros' : 'Todos os elementos do array não são Numeros'));
+    //*******************Ternary Operator variavel ? V1:V2 *******************
+    // No operador ternario toma o valor da ezquerda sim é verdadeira a condição
+    // Se é falso toma o valor da direita
+}
 //*******************Nullish Caoalescing Operator*******************
 function dataUser(old){
-// document.getElementById("paragrafo").innerHTML = `<i>${texto}</i>`;
-// Nullish Caoalescing Operator
-// document.body.innerText = 'Idade: ' + (old ?? 'não registrada');
+// (old ?? 'não registrada');
 // Com o operador or || ele toma zero como não válido (old || 'não registrada');
 // Por isso temos o operador  ?? Nullish Caoalescing Operator
-// const text = (old ? 'não registrada');
+// (old || 'não registrada');
 return((old ?? 'idade não registrada'));
 }
 //*******************Objeto*******************
@@ -82,7 +104,8 @@ async function apiQuoteKanyeWest(){
 // document.getElementById("paragrafo").innerHTML = `<p>Oi ${nameUser}</p>`;
 writeDinamic('Features IS6 e API');
 writeDinamic('Nadi',dataUser(null));
+arrayIS6();
+ObjectUser();
 apiGitHub().then((bio) =>{writeDinamic(bio)});
 // apiGitHubRepos().then((body) =>{writeDinamic(JSON.stringify(Object.entries(body)))});
 apiQuoteKanyeWest().then((quote) =>{writeDinamic(quote,'Kanye West')});
-ObjectUser();

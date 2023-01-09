@@ -1,0 +1,6 @@
+// document.getElementById("paragrafo").innerHTML = `<i>${texto}</i>`;
+// Nullish Caoalescing Operator
+// document.body.innerText = 'Idade: ' + (old ?? 'não registrada');
+// Com o operador or || ele toma zero como não válido (old || 'não registrada');
+// Por isso temos o operador  ?? Nullish Caoalescing Operator
+// const text = (old ? 'não registrada');

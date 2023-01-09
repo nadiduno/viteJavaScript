@@ -21,6 +21,23 @@ function dataUser(old){
 // const text = (old ? 'não registrada');
 return((old ?? 'idade não registrada'));
 }
+//*******************Objeto*******************
+function ObjectUser(){
+    const user={
+        name:'Nadi Duno',
+        old: 40,
+        address:{
+            city:'Salvador, Ba',
+            country:'Brasil',
+        },
+        api:"https://api.github.com/users/nadiduno",
+    };
+    writeDinamic(JSON.stringify(Object.entries(user)));
+    // **Destructuring** e 
+    //*******************Rest Operator*******************
+    const {name,address, ...rest } = user;
+    writeDinamic(JSON.stringify(Object.values(rest)));
+}
 //*******************Destructuring*******************
 function destrucGitHub({location,login: Nickname,blog : Site}){
     //Desestruturo nos argumentos
@@ -57,18 +74,8 @@ async function apiQuoteKanyeWest(){
         console.log('End');
     }
 }
-//*******************Async - Promise*******************
-function ObjectUser(){
-    const user={
-        name:'Nadi Duno',
-        old: 40,
-        address:{
-            city:'Salvador, Ba',
-            country:'Brasil',
-        },
-    };
-    writeDinamic(JSON.stringify(Object.entries(user)));
-}
+
+
 
 //*******************Call Function*******************
 // document.write('<br><br>Oi');

@@ -25,18 +25,37 @@ return((old ?? 'idade não registrada'));
 //*******************Async - Promise*******************
 async function apiGitHub(){
     try{
-        const response = await fetch('https://api.github.com/users/nadiduno/repos');
+        const response = await fetch('https://api.github.com/users/nadiduno');
         const body = await response.json();
-        console.log(body);
+        // console.log(body);
+        return (body.bio);
     } catch(err){
         console.log(err);
     } finally {
         console.log('End');
     }
 }
+//*******************Outher Api*******************
+async function apiQuoteKanyeWest(){
+    try{
+        const response = await fetch('https://api.kanye.rest');
+        // const response = await fetch('https://api.adviceslip.com/advice');
+        const body = await response.json();
+        console.log(body);
+        return (body.quote);
+    } catch(err){
+        console.log(err);
+    } finally {
+        console.log('End');
+    }
+}
+//*******************Async - Promise*******************
 
+
+//*******************Call Function*******************
 // document.write('<br><br>Oi');
 // document.getElementById("paragrafo").innerHTML = `<p>Oi ${nameUser}</p>`;
 writeDinamic('Features IS6 e API');
 writeDinamic('Nadi',dataUser(null));
-apiGitHub();
+apiGitHub().then((bio) =>{writeDinamic(bio)});
+apiQuoteKanyeWest().then((quote) =>{writeDinamic(quote,'Kanye West')});

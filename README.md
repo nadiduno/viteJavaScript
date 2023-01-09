@@ -13,8 +13,11 @@
   >
   <br />
 </div>
-![TECH](https://img.shields.io/badge/%3C%2F%3E-TECH-lightgrey)<br/>
-[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) | [Vite](https://vitejs.dev/) | [Vite](https://nodejs.org/en/download/) | [NPM](https://www.npmjs.com/)
+
+[![TECH](https://img.shields.io/badge/-TECH-brightgreen)]
+
+<br/>
+[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)| [Vite](https://vitejs.dev/) | [Node](https://nodejs.org/en/download/) | [NPM](https://www.npmjs.com/)
 
 <br />
 
@@ -29,4 +32,4 @@ $ npm i
 $ npm run dev
 ```
 
-DevRel ::heart:: [Nadi Duno](https://www.linkedin.com/in/nadiduno/) &copy © 2023
+DevRel :heart: [Nadi Duno](https://www.linkedin.com/in/nadiduno/) © 2023

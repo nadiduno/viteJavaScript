@@ -21,6 +21,13 @@ function dataUser(old){
 // const text = (old ? 'não registrada');
 return((old ?? 'idade não registrada'));
 }
+//*******************Destructuring*******************
+function destrucGitHub({location,login: Nickname,blog : Site}){
+    //Desestruturo nos argumentos
+    //Senão deixo vazio o argumento e declaro assim 
+    // const {location,login: Nickname,blog : Site}=body;
+    writeDinamic(Object.entries({location,Nickname,Site}));
+}    
 //*******************Async - Promise*******************
 async function apiGitHub(){
     try{

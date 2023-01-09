@@ -21,13 +21,13 @@ function dataUser(old){
 // const text = (old ? 'não registrada');
 return((old ?? 'idade não registrada'));
 }
-    
 //*******************Async - Promise*******************
 async function apiGitHub(){
     try{
         const response = await fetch('https://api.github.com/users/nadiduno');
         const body = await response.json();
-        // console.log(body);
+        console.log(body);
+        destrucGitHub(body)
         return (body.bio);
     } catch(err){
         console.log(err);
@@ -35,6 +35,7 @@ async function apiGitHub(){
         console.log('End');
     }
 }
+
 //*******************Outher Api*******************
 async function apiQuoteKanyeWest(){
     try{
@@ -50,7 +51,17 @@ async function apiQuoteKanyeWest(){
     }
 }
 //*******************Async - Promise*******************
-
+function ObjectUser(){
+    const user={
+        name:'Nadi Duno',
+        old: 40,
+        address:{
+            city:'Salvador, Ba',
+            country:'Brasil',
+        },
+    };
+    writeDinamic(JSON.stringify(Object.entries(user)));
+}
 
 //*******************Call Function*******************
 // document.write('<br><br>Oi');
@@ -58,4 +69,6 @@ async function apiQuoteKanyeWest(){
 writeDinamic('Features IS6 e API');
 writeDinamic('Nadi',dataUser(null));
 apiGitHub().then((bio) =>{writeDinamic(bio)});
+// apiGitHubRepos().then((body) =>{writeDinamic(JSON.stringify(Object.entries(body)))});
 apiQuoteKanyeWest().then((quote) =>{writeDinamic(quote,'Kanye West')});
+ObjectUser();

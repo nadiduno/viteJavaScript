@@ -1,25 +1,38 @@
 // IS6 features no JavaScript
 
+//*******************Template Literals*******************
+function dataUserImterpolation(nameUser){
+    //*******************Interpolation*******************
+    // `Menssagem ${variavel}`
+    //*******************Ternary Operator variavel ? V1:V2 *******************
+    //No operador ternario toma o valor da ezquerda sim é verdadeira a condição
+    //Se é falso toma o valor da direita
+    //Apresenta Bem-vido nomeDoUsuario se o valor exisitir ou Bem-vido visitante se o nome não existir
+    return(`Bem-vido ${nameUser ? nameUser : 'visitante'}`);
+    }
+    
 //*******************Nullish Caoalescing Operator*******************
-function dataUser(old){
-// (old ?? 'não registrada');
-// Com o operador or || ele toma zero como não válido (old || 'não registrada');
+function dataUser(ageUser){
+// (ageUser ?? 'Idade não registrada');
+// Com o operador or || ele toma zero como não válido (ageUser || 'Idadenão registrada');
 // Por isso temos o operador  ?? Nullish Caoalescing Operator
-// (old || 'não registrada');
-return((old ?? 'Idade não registrada'));
+return((ageUser ?? 'Idade não registrada'));
 }
+
+    
 
 // *******************************ForEach*******************************
 function writeDinamic(...dataUser){
     dataUser.forEach((dataUser) => {
         //Criando o texto DINAMICAMENTE
-        var spanNova = document.createElement('p');
+        var pNew = document.createElement('p');
         var resultadoNovo = document.createTextNode(dataUser)
-        spanNova.appendChild(resultadoNovo);
-        var spanAtual = document.getElementById('texto');
-        document.body.insertBefore(spanNova, spanAtual);
+        pNew.appendChild(resultadoNovo);
+        var pLatest = document.getElementById('texto');
+        document.body.insertBefore(pNew, pLatest);
     })
 }
+
 // *******************************Arrow*******************************
 function arrayIS6(){
 
@@ -60,9 +73,7 @@ function arrayIS6(){
     //Retorna true o falso se todos os elementos satisfacem a condição
     const everyNumber = originArray.every(item => typeof item === 'number');
     writeDinamic(JSON.stringify(everyNumber ? 'Todos os elementos do array são Numeros' : 'Não todos os elementos do array são Numeros'));
-    //*******************Ternary Operator variavel ? V1:V2 *******************
-    // No operador ternario toma o valor da ezquerda sim é verdadeira a condição
-    // Se é falso toma o valor da direita
+    
     
     
     //*******************Some*******************
@@ -110,33 +121,10 @@ function ObjectUser(){
     const {name,address, ...rest } = user;
     writeDinamic(JSON.stringify(Object.values(rest)));
 }
-//*******************Destructuring*******************
-function destrucGitHub({location,login: Nickname,blog : Site}){
-    //Desestruturo nos argumentos
-    //Senão deixo vazio o argumento e declaro assim 
-    // const {location,login: Nickname,blog : Site}=body;
-    writeDinamic(Object.entries({location,Nickname,Site}));
-}    
 //*******************Async - Promise*******************
-async function apiGitHub(){
-    try{
-        const response = await fetch('https://api.github.com/users/nadiduno');
-        const body = await response.json();
-        console.log(body);
-        destrucGitHub(body)
-        return (body.bio);
-    } catch(err){
-        console.log(err);
-    } finally {
-        console.log('End');
-    }
-}
-
-//*******************Outher Api*******************
 async function apiQuoteKanyeWest(){
     try{
         const response = await fetch('https://api.kanye.rest');
-        // const response = await fetch('https://api.adviceslip.com/advice');
         const body = await response.json();
         console.log(body);
         return (body.quote);
@@ -147,15 +135,98 @@ async function apiQuoteKanyeWest(){
     }
 }
 
+//*******************API GitHub*******************
+async function apiGitHub(){
+    try{
+        const response = await fetch('https://api.github.com/users/nadiduno');
+        const body = await response.json();
+        console.log(body);
+        //Retornando 1 campo (BIO)
+        return (body.bio);
+    } catch(err){
+        console.log(err);
+    } finally {
+        console.log('End');
+    }
+}
 
+//*******************Destructuring GitHub*******************
+function destrucGitHub({location,login: Nickname,blog : Site}){
+    //Desestruturos argumentos
+    //Senão deixo vazio o argumento e declaro assim 
+    // const {location,login: Nickname,blog : Site}=body;
+    // writeDinamic(Object.entries({location,Nickname,Site}));
+    writeDinamic(location,Nickname,Site);
+}
+
+async function apiGitHubAll(){
+    try{
+        const response = await fetch('https://api.github.com/users/nadiduno');
+        const body = await response.json();
+        destrucGitHub(body);
+        //Retornando toda a API
+        return (body);
+    } catch(err){
+        console.log(err);
+    } finally {
+        console.log('End');
+    }
+}
+
+//*******************Destructuring Repos GitHub*******************
+function destrucGitHubRepos({name,description}){
+    writeDinamic(name,description ?? 'Repositório sem descripcão');
+}
+async function apiGitHubRepos(){
+    try{
+        const response = await fetch('https://api.github.com/users/nadiduno/repos');
+        const body = await response.json();
+        console.log(body);
+        //A API retorna um array de arry
+        // [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+        //O primeiro elemento esta assim 
+        //0:{id: 525494942, node_id: 'R_kgDOH1Jqng', name: '21daycode', full_name: 'nadiduno/21daycode', private: false, …} 
+        //Quero pegar name e description, para isso faço um forEach para recorrer meu sob array e dentro dele desestruturo (extraindo os dados desejados)
+        body.forEach(item => {
+            destrucGitHubRepos(item);
+        })
+        return (body);
+    } catch(err){
+        console.log(err);
+    } finally {
+        console.log('End');
+    }
+}
+
+
+
+
+
+//*******************Declaration*******************
+const nameUser='Nadi';
+//const nameUser=null;
+//const ageUser=40;
+const ageUser=null;
 
 //*******************Call Function*******************
+// writeDinamic('Features IS6 e API');
+// writeDinamic(dataUserImterpolation(nameUser))
+// writeDinamic(dataUser(ageUser));
+// // writeDinamic(dataUserImterpolation(nameUser),dataUser(ageUser));
+
+// arrayIS6();
+
+// ObjectUser();
+
+// apiQuoteKanyeWest().then((quote) =>{writeDinamic(quote,'Kanye West')});
+apiGitHub().then((bio) =>{writeDinamic(bio)});
+apiGitHubAll().then((body) =>{writeDinamic()});
+apiGitHubRepos().then((body) =>{writeDinamic()});
+
+// apiGitHubRepos().then((body) =>{writeDinamic(JSON.stringify(Object.entries(body)))});
+
+
+
+//Exemplos de Imprimir com Document
 // document.write('<br><br>Oi');
 // document.getElementById("paragrafo").innerHTML = `<p>Oi ${nameUser}</p>`;
-writeDinamic('Features IS6 e API');
-writeDinamic('Nadi',dataUser(null));
-arrayIS6();
-ObjectUser();
-apiGitHub().then((bio) =>{writeDinamic(bio)});
-// apiGitHubRepos().then((body) =>{writeDinamic(JSON.stringify(Object.entries(body)))});
-apiQuoteKanyeWest().then((quote) =>{writeDinamic(quote,'Kanye West')});

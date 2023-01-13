@@ -45,6 +45,7 @@ $ npm run dev
 
 ```bash
 #Template Literals and Interpolation
+const nameUser = 'Nadi';
 return(`Bem-vido eu sou ${nameUser ? nameUser : 'visitante'}`);
 
 #Nullish Caoalescing Operator
@@ -58,7 +59,7 @@ function writeDinamic(...dataUser){
 }
 
 #Async - Promise - API
-export async function apiQuoteKanyeWest(){
+async function apiQuoteKanyeWest(){
     try{
         const response = await fetch('https://api.kanye.rest');
         const body = await response.json();
@@ -72,11 +73,13 @@ export async function apiQuoteKanyeWest(){
 }
 
 #Destructuring 
-export function destrucGitHub(){
+function destrucGitHub(){
     const {location,login: Nickname,blog : Site}=body;
     return (Object.entries({location,Nickname,Site}));
 }
 
 ```
+
+Link da aplicação --> https://vite-java-script.vercel.app/
 
 DevRel :heart: [Nadi Duno](https://www.linkedin.com/in/nadiduno/) © 2023

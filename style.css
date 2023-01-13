@@ -1,0 +1,62 @@
+html {
+    font-family: 'Roboto', sans-serif;
+    --color1: #262626;
+    --color2: #35528C;
+    --color3: rgba(148, 146, 146, 0.4);
+    --color4:#11308C;
+    --color5: #fff;
+    --color6: rgb(40, 228, 15);
+}
+
+body {
+display:block;
+align-items:center;
+justify-content:center;
+    padding: 0;
+-webkit-font-smoothing: antialiased;
+
+}
+main {
+background: url(public/apiNadiDuno.jpg);
+width: 770px;
+height: 250px;
+background-size: cover; 
+align-items:center;
+margin-left: auto;
+margin-right: auto;
+}
+p{
+max-width: 750px;
+gap: 0.5rem;
+padding: 0.5rem;
+margin-left: auto;
+margin-right: auto;
+}
+p:nth-child(odd){
+background-color: var(--color2);
+color:var(--color5);
+font-style: bold;
+}
+p:nth-child(even){
+background-color:var(--color3);
+color:var(--color1);  
+}
+header{
+width: 770px;
+margin-top:3rem;
+padding:1rem 0;
+align-items:center;
+text-align:center;
+margin-left: auto;
+margin-right: auto;
+background:var(--color1);
+color:var(--color5);
+}
+a{
+color:var(--color6);
+text-decoration:none;
+}
+a:hover {
+opacity: .8;
+cursor: pointer;
+}

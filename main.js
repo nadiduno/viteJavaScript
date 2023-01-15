@@ -17,7 +17,7 @@ const ageUser=null;
 //*******************Call Function*******************
 
 //IS6 features no JavaScript
-writeDinamic('Features IS6 e API');
+//writeDinamic('Features IS6 e API');
 
 //Function Rest Parameter: Indefinite number of arguments 
 writeDinamic(dataUserInterpolation(nameUser),dataUser(ageUser));
@@ -28,15 +28,16 @@ writeDinamic(dataUserInterpolation(nameUser),dataUser(ageUser));
 // writeDinamic(dataUser(ageUser));
 
 
-arrayIS6();
+//arrayIS6();
 
 // ObjectUser();
 
 //API Public
-apiQuoteKanyeWest().then((quote) =>{writeDinamic(quote,'Kanye West')});
 apiGitHubBio().then((bio) =>{writeDinamic(bio)});
 apiGitHubAll().then((body) =>{writeDinamic()});
 apiGitHubRepos().then((body) =>{writeDinamic()});
+
+// apiQuoteKanyeWest().then((quote) =>{writeDinamic(quote,'Kanye West')});
 
 //Exemplos de Imprimir com Document
 // document.write('<br><br>Oi');
